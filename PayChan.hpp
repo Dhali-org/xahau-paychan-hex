@@ -1,4 +1,3 @@
-// PayChan.cpp
 #include <ripple/basics/IOUAmount.h>
 #include <ripple/protocol/AccountID.h>
 #include <ripple/protocol/UintTypes.h>

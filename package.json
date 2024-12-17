@@ -1,0 +1,19 @@
+{
+  "name": "xahau-paychan-hex",
+  "version": "1.0.12",
+  "main": "index.js",
+  "scripts": {
+    "build": "cmake -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "npm version patch && npm publish"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "node-addon-api": "^8.3.0",
+    "xahau-paychan-hex": "^1.0.1"
+  },
+  "gypfile": false
+}
