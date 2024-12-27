@@ -32,7 +32,7 @@ std::string serializePayChanAuthorization(const std::string& issuer,
     }
 }
 
-PYBIND11_MODULE(paychan, m) {
+PYBIND11_MODULE(paychan_python, m) {
     m.doc() = "Python binding for PayChan authorization serialization"; // Optional module docstring
     m.def("serialize_paychan_authorization", &serializePayChanAuthorization, 
           py::arg("issuer"), py::arg("channelId"), py::arg("currencyCode"), py::arg("amount"),
