@@ -53,9 +53,6 @@ target_include_directories(paychan_auth
         ${NODE_API_INCLUDE_DIR}
 )
 
-message(${NODE_ADDON_API_INCLUDE_DIR})
-message(${NODE_API_INCLUDE_DIR})
-
 target_link_libraries(paychan_auth
     PUBLIC
     OpenSSL::SSL
