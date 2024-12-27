@@ -23,6 +23,7 @@ execute_process(
 get_filename_component(NODE_ROOT ${NODE_EXECUTABLE} DIRECTORY)
 set(NODE_API_INCLUDE_DIR "${NODE_ROOT}/../include/node")
 
+find_package(pybind11 CONFIG REQUIRED)
 find_package(OpenSSL REQUIRED)
 find_package(Boost REQUIRED COMPONENTS thread)
 
@@ -81,4 +82,17 @@ target_link_libraries(addon
 set_target_properties(addon PROPERTIES
     PREFIX ""
     SUFFIX ".node"
+)
+
+pybind11_add_module(paychan_python src/pybind11_wrapper.cpp)
+
+target_include_directories(paychan_python
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/xahaud/src
+)
+
+target_link_libraries(paychan_python
+    PRIVATE
+    paychan_auth
 )
