@@ -32,7 +32,7 @@ console.log("PayChan Hex to be Signed:", result);
 
 ## Build Instructions
 
-If you prefer (you might need to, because the pre-built binaries in the package may not work for your system) you can build the package from [source](https://github.com/Dhali-org/xahau-paychan-hex).
+If you prefer (you might need to, because the pre-built binaries in the package may not work for your system) you can build the package from [source](https://github.com/Dhali-org/xahau-paychan-hex) by using the `Dockerfile`
 
 ## Example
 
