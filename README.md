@@ -1,43 +1,24 @@
 # Xahau Payment Channel Hex Generator
 
-![NPM Version](https://img.shields.io/npm/v/xahau-paychan-hex)
+The Xahau Payment Channel Hex Generator allows you to generate hex strings to be signed when using Xahau payment channels. It uses the core `xahaud` C++ source code and must be built from source to be used. It is compatible with `node` and `python`.
 
-The Xahau Payment Channel Hex Generator is an npm package designed to generate hex strings that can be signed by Xahau wallets when spending issued currencies through payment channels.
+## Setup
 
-## Installation
-
-To install the Xahau Payment Channel Hex Generator, use npm:
-
-```bash
-npm install xahau-paychan-hex
+Pull the `xahaud` submodule:
+```
+git clone --recurse-submodules --shallow-submodules --depth 1
 ```
 
-## Usage
+## Build and run the `example.py` example
 
-After installation, you can use this package to generate the hex strings needed for signing by Xahau wallets.
-
-Example usage:
-
-```javascript
-const generateHex = require('xahau-paychan-hex');
-const result = generateHex.serializePayChanAuthorization(
-    "rDyz9rX7eGJRdVDC8NGxMxqh9U14qduqzS", 
-    "C373E17947B78F44537C9C5E6EF71914CEDEC3BEA356CA08F1C186E2BDA05B93", 
-    "DHA", 
-    1.0
-);
-
-console.log("PayChan Hex to be Signed:", result);
+```
+docker build -f Dockerfile.python -t pychan .
+docker run -t pychan
 ```
 
-## Build Instructions
+## Build and run the `example.js` example
 
-If you prefer (you might need to, because the pre-built binaries in the package may not work for your system) you can build the package from [source](https://github.com/Dhali-org/xahau-paychan-hex) by using the `Dockerfile`
-
-## Example
-
-To run the example, execute the following command:
-
-```bash
-node example.js
+```
+docker build -f Dockerfile.node -t nodechan .
+docker run -t nodechan
 ```

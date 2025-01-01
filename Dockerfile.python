@@ -1,6 +1,5 @@
 FROM python:3.10
 
-# Set the working directory
 WORKDIR /code
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -13,10 +12,8 @@ RUN pip install --no-cache-dir pybind11
 
 COPY . /code/
 
-RUN rm -rf build && mkdir build && cd build && cmake .. && cmake --build .
+RUN rm -rf build && mkdir build && cd build && cmake ../python && cmake --build .
 
-ENV PORT 80
+ENV PYTHONPATH=/code/build
 
-EXPOSE 80
-
-CMD ["node", "example.js"]
+CMD ["python", "example.py"]
