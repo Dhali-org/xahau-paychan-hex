@@ -1,0 +1,3 @@
+[submodule "core/xahaud"]
+	path = core/xahaud
+	url = https://github.com/Xahau/xahaud.git
