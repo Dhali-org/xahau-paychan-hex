@@ -6,7 +6,7 @@ The Xahau Payment Channel Hex Generator allows you to generate hex strings to be
 
 Pull the `xahaud` submodule:
 ```
-git clone --recurse-submodules --shallow-submodules --depth 1
+git submodule update --init --recursive
 ```
 
 ## Build and run the `example.py` example
