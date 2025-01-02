@@ -1,8 +1,9 @@
-FROM ubuntu:latest
+FROM node:latest
 WORKDIR /code
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential libssl-dev libboost-all-dev cmake libnode-dev libhowardhinnant-date-dev \
     && rm -rf /var/lib/apt/lists/*
+RUN npm install node-addon-api
 COPY . /code/
 RUN rm -rf build && mkdir build && cd build && cmake ../node && cmake --build .
 CMD ["node", "example.js"]

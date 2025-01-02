@@ -7,22 +7,23 @@
 Napi::String SerializePayChanAuthorization(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
 
-    if (info.Length() != 4 || 
+    if (info.Length() != 5 || 
         !info[0].IsString() || !info[1].IsString() || 
-        !info[2].IsString() || !info[3].IsNumber()) {
-        Napi::TypeError::New(env, "Expected (issuer, channelId, currencyCode, amount)").ThrowAsJavaScriptException();
+        !info[2].IsString() || !info[3].IsNumber() || !info[4].IsNumber()) {
+        Napi::TypeError::New(env, "Expected (issuer, channelId, currencyCode, mantissa, exponent)").ThrowAsJavaScriptException();
         return Napi::String::New(env, "");
     }
 
     std::string issuer = info[0].As<Napi::String>();
     std::string channelId = info[1].As<Napi::String>();
     std::string currencyCode = info[2].As<Napi::String>();
-    double amount = info[3].As<Napi::Number>();
+    int mantissa = info[3].As<Napi::Number>();
+    int exponent = info[3].As<Napi::Number>();
 
     try {
         ripple::Serializer msg;
         ripple::uint256 channelKey = ripple::uint256(channelId.c_str());
-        ripple::IOUAmount amt(amount, 0);
+        ripple::IOUAmount amt(mantissa, exponent);
 
         ripple::Currency cur;
         to_currency(cur, currencyCode);
